@@ -1,19 +1,23 @@
 <?php
 
 require_once __DIR__ . '/../bootstrap.php';
-require_once __DIR__ . '/../src/Miembro.php';
+require_once __DIR__ . '/../src/MiembroRepository.php';
 
-$miembro = new Miembro('Juan Pérez', 30, 'Mensual');
+$repo = new MiembroRepository();
+$miembros = $repo->obtenerTodos();
 
 ob_start();
 ?>
 
-<h2>Prueba de entidad Miembro</h2>
+<h2>Listado de Miembros</h2>
 
-<p>Nombre: <?= $miembro->getNombre() ?></p>
-<p>Edad: <?= $miembro->getEdad() ?></p>
-<p>Plan: <?= $miembro->getPlan() ?></p>
-<p>Estado: <?= $miembro->getEstado() ?></p>
+<?php foreach ($miembros as $miembro): ?>
+    <p>
+        <?= $miembro->getNombre() ?> -
+        <?= $miembro->getPlan() ?> -
+        <?= $miembro->getEstado() ?>
+    </p>
+<?php endforeach; ?>
 
 <?php
 $content = ob_get_clean();

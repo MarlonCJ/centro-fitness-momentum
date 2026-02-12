@@ -1,0 +1,141 @@
+🎯 Proyecto: Centro Fitness Momentum
+
+Stack: PHP puro (sin framework)
+Nivel: Profesional estructurado
+Base: Todo lo aprendido en bloques 1–9
+
+🧠 FASE 0 — Antes de escribir código
+
+Un desarrollador profesional no empieza programando.
+
+Primero define:
+
+📐 Arquitectura
+
+📂 Estructura de carpetas
+
+🔁 Flujo del sistema
+
+🧩 Entidades del dominio
+
+🏗️ ARQUITECTURA QUE VAMOS A USAR
+
+No es MVC completo, pero sí una estructura profesional organizada por responsabilidades.
+
+gym-app/
+│
+├── public/          ← Punto de entrada (lo único accesible)
+│
+├── src/             ← Lógica del dominio (clases)
+│
+├── templates/       ← Vistas
+│
+├── config/          ← Configuración
+│
+├── storage/         ← Logs / futuro
+│
+└── bootstrap.php    ← Arranque del sistema
+
+📂 PASO 1 — Crear estructura vacía
+
+Antes de escribir código, crea esta estructura:
+
+gym-app/
+│
+├── public/
+│   ├── index.php
+│   ├── login.php
+│   ├── dashboard.php
+│   ├── process_login.php
+│   └── logout.php
+│
+├── src/
+│
+├── templates/
+│
+├── config/
+│
+├── storage/
+│
+└── bootstrap.php
+
+
+⚠️ No escribas nada todavía.
+Solo crea carpetas y archivos vacíos.
+
+Cuando lo tengas hecho, me dices:
+👉 “Estructura creada”
+
+Y seguimos al siguiente paso.
+
+🧠 ¿Por qué esta estructura?
+public/
+
+Aquí vive lo que el navegador puede ver.
+
+En un servidor real:
+
+DocumentRoot → gym-app/public
+
+
+Todo lo demás está protegido.
+
+src/
+
+Aquí vivirán:
+
+Miembro.php
+
+Entrenador.php
+
+AuthService.php
+
+Nada de HTML aquí.
+
+templates/
+
+Aquí solo vistas:
+
+header.php
+
+footer.php
+
+layout.php
+
+config/
+
+app.php
+
+constantes
+
+entorno
+
+bootstrap.php
+
+Se encarga de:
+
+Cargar config
+
+Manejar errores
+
+Iniciar sesión
+
+Cargar clases
+
+No imprime HTML.
+
+🧠 Mentalidad desde ahora
+
+Vamos a trabajar así:
+
+Un paso
+
+Lo implementas
+
+Lo revisamos
+
+Seguimos
+
+Sin saltos.
+Sin mezclar.
+Sin ansiedad.

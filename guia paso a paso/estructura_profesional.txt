@@ -1,0 +1,122 @@
+👤 Rol: Cliente
+Nombre del negocio: Centro Fitness Momentum
+
+Hola, soy Carlos Ramírez.
+Tengo un pequeño gimnasio en mi ciudad y necesito un sitio web básico hecho en PHP. No quiero WordPress. Quiero algo sencillo, funcional y seguro.
+
+🎯 Mi Necesidad
+
+Quiero un sitio web que me permita:
+
+Mostrar información pública del gimnasio.
+
+Permitir que mis entrenadores inicien sesión.
+
+Tener un panel privado donde puedan ver los miembros registrados.
+
+Poder registrar nuevos miembros desde el panel privado.
+
+Cerrar sesión correctamente.
+
+Que el sistema sea seguro y no cualquiera pueda entrar al panel.
+
+No necesito base de datos todavía.
+Podemos trabajar con arrays en memoria.
+
+📌 Lo que quiero que tenga el sitio
+🔹 Parte pública
+
+Página principal:
+
+Nombre del gimnasio
+
+Horario de atención
+
+Lista de servicios (array dinámico)
+
+Botón “Área de entrenadores”
+
+🔹 Autenticación
+
+Un login para entrenadores:
+
+Email
+
+Password
+
+Validación con datos simulados (array o constantes)
+
+Manejo de sesión
+
+Redirección correcta
+
+Protección de rutas
+
+🔹 Panel privado
+
+Cuando un entrenador inicie sesión quiero que vea:
+
+Mensaje de bienvenida
+
+Listado de miembros registrados
+
+Opción para agregar un nuevo miembro
+
+Botón cerrar sesión
+
+🔹 Miembros
+
+Cada miembro debe tener:
+
+Nombre
+
+Edad
+
+Tipo de plan (Mensual / Trimestral / Anual)
+
+Estado (Activo / Suspendido)
+
+🧠 Restricciones Técnicas (como cliente exigente)
+
+Quiero que el sistema:
+
+Tenga estructura profesional
+
+No mezcle todo en un solo archivo
+
+Use clases para modelar entidades
+
+Use sesiones correctamente
+
+No tenga errores visibles
+
+Sea fácil de escalar después
+
+📂 Resultado esperado (sin darte la estructura)
+
+Tú como desarrollador debes decidir:
+
+Estructura de carpetas
+
+Organización
+
+Uso de bootstrap
+
+Uso de helpers
+
+Modelos POO
+
+Flujo del sistema
+
+🚀 Tu Misión como Desarrollador
+
+Diseñar arquitectura.
+
+Explicarme brevemente tu propuesta técnica.
+
+Empezar a implementarlo por fases.
+
+Justificar tus decisiones técnicas.
+
+Yo seré exigente 😄
+Si algo no me convence, te lo diré como cliente.

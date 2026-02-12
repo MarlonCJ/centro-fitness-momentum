@@ -1,0 +1,106 @@
+🧱 PASO 3 — Crear la capa de vistas (templates)
+
+Antes de lógica, antes de clases…
+vamos a estructurar cómo se renderiza el HTML.
+
+En proyectos reales:
+
+El HTML no se repite.
+Se centraliza en layout + templates.
+
+🎯 Objetivo de este paso
+
+Crear:
+
+templates/
+├── layout.php
+├── header.php
+└── footer.php
+
+
+Y dejar preparado el sistema para renderizar páginas limpias.
+
+📄 1️⃣ Crear templates/header.php
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><?= APP_NAME ?></title>
+</head>
+<body>
+
+<header>
+    <h1><?= APP_NAME ?></h1>
+    <p>Propietario: <?= APP_AUTHOR ?></p>
+    <hr>
+</header>
+
+📄 2️⃣ Crear templates/footer.php
+<hr>
+
+<footer>
+    <small>&copy; <?= APP_YEAR ?> - Todos los derechos reservados</small>
+</footer>
+
+</body>
+</html>
+
+📄 3️⃣ Crear templates/layout.php
+
+Este archivo será el contenedor base.
+
+<?php require_once __DIR__ . '/header.php'; ?>
+
+<main>
+    <?= $content ?? '' ?>
+</main>
+
+<?php require_once __DIR__ . '/footer.php'; ?>
+
+🧠 ¿Qué es $content?
+
+Es una variable que contendrá el contenido dinámico de cada página.
+
+Esto simula un layout profesional sin usar framework.
+
+🧪 Ahora vamos a probar el sistema de vistas
+📄 Modifica public/index.php así:
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+
+ob_start();
+?>
+
+<h2>Bienvenido al Centro Fitness Momentum</h2>
+<p>Tu salud es nuestra prioridad.</p>
+
+<?php
+$content = ob_get_clean();
+
+require_once __DIR__ . '/../templates/layout.php';
+
+🧠 ¿Qué está pasando aquí?
+🔹 ob_start()
+
+Activa un buffer de salida.
+
+🔹 ob_get_clean()
+
+Captura el HTML generado y lo guarda en $content.
+
+🔹 Luego el layout lo imprime dentro del <main>.
+
+Este patrón es muy usado en sistemas sin framework.
+
+🧪 Prueba ahora en el navegador:
+http://localhost/gym-app/public/index.php
+
+
+Deberías ver:
+
+Header con nombre del gimnasio
+
+Texto de bienvenida
+
+Footer

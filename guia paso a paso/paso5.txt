@@ -1,0 +1,117 @@
+Perfecto 👌
+Eso significa que ya estás modelando dominio correctamente. Muy buen paso.
+
+Ahora vamos a subir un poco el nivel.
+
+Hasta ahora creamos una entidad suelta.
+Pero en un sistema real no trabajas con objetos aislados.
+
+Trabajas con colecciones y con una capa que los administra.
+
+🧱 PASO 5 — Crear un “Repositorio” de Miembros
+
+En proyectos profesionales no accedemos a datos directamente.
+
+Creamos una capa intermedia llamada:
+
+Repository (Repositorio)
+
+Su función es:
+
+Gestionar colecciones
+
+Abstraer la fuente de datos
+
+Preparar el camino para base de datos futura
+
+📂 Crear archivo:
+src/MiembroRepository.php
+
+📄 Código para MiembroRepository.php
+<?php
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/Miembro.php';
+
+class MiembroRepository
+{
+    private array $miembros = [];
+
+    public function __construct()
+    {
+        // Datos simulados (más adelante vendrán de BD)
+        $this->miembros = [
+            new Miembro('Juan Pérez', 30, 'Mensual'),
+            new Miembro('Ana Gómez', 25, 'Trimestral'),
+            new Miembro('Carlos Ruiz', 40, 'Anual', 'Suspendido'),
+        ];
+    }
+
+    public function obtenerTodos(): array
+    {
+        return $this->miembros;
+    }
+
+    public function agregar(Miembro $miembro): void
+    {
+        $this->miembros[] = $miembro;
+    }
+}
+
+🧠 ¿Qué estamos haciendo realmente?
+
+✔ No usamos arrays sueltos en controladores
+✔ Creamos una capa dedicada a manejar miembros
+✔ Preparamos el sistema para base de datos
+✔ Aplicamos principio de responsabilidad única
+
+Esto ya parece arquitectura de framework.
+
+🧪 Ahora vamos a probarlo
+📄 Modifica public/index.php así:
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../src/MiembroRepository.php';
+
+$repo = new MiembroRepository();
+$miembros = $repo->obtenerTodos();
+
+ob_start();
+?>
+
+<h2>Listado de Miembros</h2>
+
+<?php foreach ($miembros as $miembro): ?>
+    <p>
+        <?= $miembro->getNombre() ?> -
+        <?= $miembro->getPlan() ?> -
+        <?= $miembro->getEstado() ?>
+    </p>
+<?php endforeach; ?>
+
+<?php
+$content = ob_get_clean();
+
+require_once __DIR__ . '/../templates/layout.php';
+
+🧪 Prueba en navegador.
+
+Deberías ver una lista de 3 miembros.
+
+Cuando confirmes que funciona, vamos a hacer algo importante:
+
+👉 Crear el login real para entrenadores
+👉 Proteger el dashboard
+👉 Y empezar a separar controladores
+
+Dime:
+
+¿Funcionó el listado?
+
+¿Te sientes cómodo entendiendo qué hace el Repository?
+
+Seguimos 🔥
+
+Humanize 290 words

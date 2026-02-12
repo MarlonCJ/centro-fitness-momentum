@@ -1,0 +1,110 @@
+🧱 PASO 2 — Crear el bootstrap.php
+
+Este archivo es el corazón del proyecto.
+Nada funciona sin él.
+
+🎯 Objetivo del bootstrap
+
+Debe encargarse de:
+
+Cargar configuración
+
+Configurar entorno (DEV / PROD)
+
+Iniciar sesión
+
+Preparar el sistema para usar clases después
+
+No debe imprimir nada.
+No debe tener HTML.
+
+📄 Escribe esto en bootstrap.php
+<?php
+
+declare(strict_types=1);
+
+// =====================================
+// Bootstrap del sistema
+// =====================================
+
+// Cargar configuración
+require_once __DIR__ . '/config/app.php';
+
+// -------------------------------------
+// Configuración de entorno
+// -------------------------------------
+if (APP_ENV === 'development') {
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+} else {
+    error_reporting(0);
+    ini_set('display_errors', '0');
+}
+
+// -------------------------------------
+// Iniciar sesión
+// -------------------------------------
+session_start();
+
+🧠 Ahora necesitamos crear la configuración
+📄 Crea config/app.php
+<?php
+
+// =====================================
+// Configuración global de la aplicación
+// =====================================
+
+define('APP_ENV', 'development');
+
+define('APP_NAME', 'Centro Fitness Momentum');
+define('APP_AUTHOR', 'Carlos Ramírez');
+define('APP_YEAR', date('Y'));
+
+🧠 ¿Qué hicimos realmente?
+1️⃣ declare(strict_types=1);
+
+Activa tipado estricto en PHP.
+
+Esto:
+
+Evita conversiones silenciosas
+
+Hace el código más profesional
+
+Te acerca a estándares modernos
+
+2️⃣ Separación real de responsabilidades
+
+bootstrap.php → arranque
+
+config/app.php → configuración
+
+Eso es estructura profesional real.
+
+3️⃣ Uso correcto de __DIR__
+
+Garantiza rutas absolutas estables.
+
+🧪 Pequeña prueba (muy importante)
+
+Ahora vamos a probar si el sistema arranca.
+
+📄 En public/index.php escribe esto:
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+
+echo APP_NAME;
+
+
+Ahora entra en el navegador:
+
+http://localhost/gym-app/public/index.php
+
+
+Si ves:
+
+Centro Fitness Momentum
+
+
+Entonces el bootstrap funciona correctamente.
