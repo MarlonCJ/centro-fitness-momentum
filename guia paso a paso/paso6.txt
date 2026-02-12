@@ -1,0 +1,93 @@
+Excelente 👌
+Ahora sí vamos a entrar en algo clave para backend real:
+
+🔐 PASO 6 — Autenticación profesional básica (sin BD)
+
+Hasta ahora tenemos:
+
+✔ Dominio (Miembro)
+
+✔ Repository
+
+✔ Layout
+
+✔ Bootstrap
+
+Ahora necesitamos:
+
+Un sistema de autenticación real para entrenadores.
+
+🧠 Diseño antes de escribir código
+
+No vamos a meter lógica de login dentro de login.php.
+Eso sería amateur.
+
+Vamos a crear una clase:
+
+🔹 AuthService
+
+Porque en proyectos reales:
+
+La autenticación es una capa
+
+No es código suelto en una página
+
+📂 Crear archivo:
+src/AuthService.php
+
+📄 Código para AuthService.php
+<?php
+
+declare(strict_types=1);
+
+class AuthService
+{
+    private array $entrenadores;
+
+    public function __construct()
+    {
+        // Simulación de entrenadores (luego será BD)
+        $this->entrenadores = [
+            [
+                'email' => 'trainer@momentum.com',
+                'password' => '1234'
+            ]
+        ];
+    }
+
+    public function intentarLogin(string $email, string $password): bool
+    {
+        foreach ($this->entrenadores as $entrenador) {
+            if (
+                $entrenador['email'] === $email &&
+                $entrenador['password'] === $password
+            ) {
+                $_SESSION['auth'] = true;
+                $_SESSION['user'] = $email;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function estaAutenticado(): bool
+    {
+        return isset($_SESSION['auth']) && $_SESSION['auth'] === true;
+    }
+
+    public function logout(): void
+    {
+        session_destroy();
+    }
+}
+
+🧠 Qué estamos haciendo bien aquí
+
+✔ No mezclamos login con HTML
+✔ No manipulamos sesión desde la vista
+✔ Encapsulamos autenticación
+✔ Preparamos transición futura a BD
+
+Esto ya es estructura de backend serio.
