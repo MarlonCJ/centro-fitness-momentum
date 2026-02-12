@@ -1,0 +1,34 @@
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../src/AuthService.php';
+
+$auth = new AuthService();
+$auth->logout();
+
+header('Location: login.php');
+exit;
+
+🧪 PRUEBA COMPLETA
+
+Ahora prueba este flujo:
+
+Ir a /public/login.php
+
+Login con:
+
+Email: trainer@momentum.com
+
+Password: 1234
+
+Ver dashboard
+
+Cerrar sesión
+
+🎯 Lo que acabas de construir
+
+✔ Sistema estructurado
+✔ Autenticación encapsulada
+✔ Protección de rutas
+✔ Separación dominio / vista
+✔ Arquitectura escalable
