@@ -1,3 +1,36 @@
+Excelente 🔥
+Ahora sí entramos en una parte muy importante:
+
+✳️ Crear un formulario real
+✳️ Procesar datos
+✳️ Crear objetos dinámicamente
+✳️ Mantener arquitectura limpia
+
+Esto ya parece sistema real.
+
+🧠 Antes de programar: problema importante
+
+Ahora mismo MiembroRepository guarda datos en un array interno:
+
+private array $miembros = [];
+
+
+Eso significa:
+
+Si agregas un miembro…
+
+Se perderá al recargar la página.
+
+Porque vive en memoria.
+
+⚠️ Como todavía no usamos base de datos, vamos a usar:
+
+🔹 $_SESSION como almacenamiento temporal
+
+Esto es totalmente válido en esta etapa.
+
+🧱 PASO 1 — Modificar MiembroRepository
+📄 Reemplaza src/MiembroRepository.php por esto:
 <?php
 
 declare(strict_types=1);
@@ -52,3 +85,13 @@ class MiembroRepository
         ];
     }
 }
+
+🧠 Qué hicimos aquí
+
+✔ Usamos sesión como almacenamiento temporal
+✔ Seguimos devolviendo objetos
+✔ No rompimos arquitectura
+✔ Repository sigue siendo la única fuente de datos
+
+Muy importante:
+La vista sigue sin saber de sesiones.
